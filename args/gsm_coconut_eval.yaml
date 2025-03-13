@@ -19,16 +19,16 @@ pad_latent_to_max: True
 save_only_improve: False
 uniform_prob: 0.0
 model_id: openai-community/gpt2
-load_model_path: YOUR_PATH_TO_COCONUT_CHECKPOINT
+load_model_path: /home/user/coconut/hugface/coconut_Reproduction/stage_1_training_ck/checkpoint_5
 seed: 0
 resume: 15
 bf16: False
 train_path: data/gsm_train.json
 val_path: data/gsm_test.json
 reset_optimizer: True
-batch_size_training: 32
+batch_size_training: 8
 debug: False
-gradient_accumulation_steps: 1
+gradient_accumulation_steps: 4
 num_epochs: 25
 lr: !!float "1e-4"
 weight_decay: 0.01
