@@ -1,7 +1,7 @@
 # need 4 gpus
 
 project: coconut
-save_path: YOUR_PATH_TO_SAVE_THE_MODEL
+save_path: /home/user/coconut/hugface/saved_models/deepseek_llama8b/stage_0_ckpts
 name: gsm-cot
 
 only_eval: False
@@ -18,17 +18,17 @@ pad_latent_to_max: True
 
 save_only_improve: True
 uniform_prob: 0.0
-model_id: openai-community/gpt2
+model_id: deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B
 load_model_path: None
 seed: 0
 resume: 0
-bf16: False
+bf16: True
 train_path: data/gsm_train.json
 val_path: data/gsm_valid.json
 reset_optimizer: False
 batch_size_training: 32
 debug: False
-gradient_accumulation_steps: 1
-num_epochs: 25
+gradient_accumulation_steps: 8
+num_epochs: 4
 lr: !!float "1e-4"
 weight_decay: 0.01

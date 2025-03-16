@@ -85,7 +85,7 @@ class MyCollator:
 
     def __call__(self, features, return_tensors=None):
 
-        assert self.tokenizer.padding_side == "right"
+        assert self.tokenizer.padding_side == "left"
 
         """
         Pad the batch like this to maximize the reuse of kv cache.
