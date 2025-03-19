@@ -12,25 +12,31 @@ This is a fork from the official implementation of [Training Large Language Mode
 
 This section details additional experiments conducted to further analyze the Coconut model.
 
-### Experiment 1: Where Does COCONUT Lag? Planning or Execution?
+### Experiment 1: Performance on GSM8k-Hard and GSM8k-Platinum and 
+**Aim:** To evaluate the performance of both CoT and COCONUT techniques on the more challenging GSM8k-Hard and GSM8k-Platinum datasets.
 
-**Aim:** As described in the recent [To-CoT-or-not-to-CoT](https://arxiv.org/abs/2409.12183) work, they divide current reasoning problems into two sequential steps - planning and execution. Hence the aim of this experiment is to compare and contrast the predictions made using CoT and COCONUT techniques for the GSM8K dataset to identify potential weaknesses in Coconut's reasoning process.
+**Design:** Design : Extract raw outputs — CoT traces and final answers, for each of the settings and derive accuracy statistics. Run evaluations of CoT and COCONUT on the GSM8k-Hard and GSM8k-Platinum evaluation sets. The checkpoints used for both Stage 0 (only CoT training) and Stage 1 (COCONUT training) are utilized from this [HuggingFace artifact](https://huggingface.co/Esther22/coconut_Reproduction) contributed by a [Esther22](https://huggingface.co/Esther22)
 
-**Design:** Extract raw outputs – CoT traces and final answers – from each setting. Utilize an LLM-as-a-judge, , to classify error types, distinguishing between errors in planning and execution. The checkpoints used for both Stage 0 (only CoT training) and Stage 1 (COCONUT training) are utilized from this [HuggingFace artifact](https://huggingface.co/Esther22/coconut_Reproduction) contributed by a [Esther22](https://huggingface.co/Esther22)
+**Finding 1:** CoT is marginally better on GSM8k-Hard and GSM8k-Platinum
 
-**Finding 1:** CoT outperforms COCONUT on both planning and execution in our experiments on GSM8K.
+![CoT vs Coconut Planning and Execution](/images/gsm8khard_platinum.png)
 
-![CoT vs Coconut Planning and Execution](path/to/your/planning_execution_image.png)
+### Experiment 2: Which setup benefits more from the introduction of simple tool-use?
+**Aim:** As described in the recent [To-CoT-or-not-to-CoT](https://arxiv.org/abs/2409.12183) work, they divide current reasoning problems into two sequential steps - planning and execution. Hence the aim of this experiment is to compare and contrast the predictions made using CoT and COCONUT techniques for the GSM8K dataset to identify potential weaknesses in Coconut's reasoning process. Thereby we aim to evaluate performance based purely on planning with execution outsourced. 
 
-### Experiment 2: Performance on GSM8k-Hard and GSM8k-Platinum and the effect of simple tool use. 
+Additionally, to assess the impact of incorporating tool solvers on the performance of each method.
 
-**Aim:** To evaluate the performance of both CoT and COCONUT techniques on the more challenging GSM8k-Hard and GSM8k-Platinum datasets. Additionally, to assess the impact of incorporating tool solvers on the performance of each method.
-
-**Design:** Run evaluations of CoT and COCONUT on the GSM8k-Hard and GSM8k-Platinum evaluation sets.  Measure the performance gains achieved by integrating tool solvers for each method.
+**Design:**   Develop a primitive rule-based arithmetic solver that corrects the execution step from the reasoning chain and derives accurate output. Measure the performance gains achieved by integrating tool solvers for each method.
+![Tool Use Schematic](/images/tool_diagram.png)
 
 **Finding 2:** Tool solvers improve the performance of CoT more significantly than they improve the performance of COCONUT on these harder datasets.
 
-![Tool Use Comparison Table](path/to/your/tool_use_table_image.png)
+![Tool Use Comparison Table](/images/gsm_tool_effect.png)
+
+The following confusion matrix better describes the improvement by tool use. It is evident how tool use improves CoT way more than COCONUT due to the unavailabilty of percievable reasoning traces in the latter. (Left is CoT, Right is COCONUT)
+
+![CoT_ConfMatrix_GSM8kHard](/images/COT_matrix.png)
+![COCONUT_ConfMatrix_GSM8kHard](/images/COCONUT_matrix.png)
 
 
 ## Future Work
