@@ -1,0 +1,16 @@
+{"time":"2025-03-16T19:52:05.746010883-04:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2025-03-16T19:52:05.746144998-04:00","level":"INFO","msg":"created symlink","path":"/scratch/vt2369/COCONUT/coconut/wandb/run-20250316_195205-znp9nlay/logs/debug-core.log"}
+{"time":"2025-03-16T19:52:06.052318454-04:00","level":"INFO","msg":"created new stream","id":"znp9nlay"}
+{"time":"2025-03-16T19:52:06.052410996-04:00","level":"INFO","msg":"stream: started","id":"znp9nlay"}
+{"time":"2025-03-16T19:52:06.052583484-04:00","level":"INFO","msg":"writer: Do: started","stream_id":"znp9nlay"}
+{"time":"2025-03-16T19:52:06.052956772-04:00","level":"INFO","msg":"handler: started","stream_id":"znp9nlay"}
+{"time":"2025-03-16T19:52:06.052992307-04:00","level":"INFO","msg":"sender: started","stream_id":"znp9nlay"}
+{"time":"2025-03-16T19:52:06.50952034-04:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-16T19:53:54.065833004-04:00","level":"INFO","msg":"stream: closing","id":"znp9nlay"}
+{"time":"2025-03-16T19:53:54.065889455-04:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-16T19:53:54.075386021-04:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-16T19:53:54.412163931-04:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-16T19:53:54.494841963-04:00","level":"INFO","msg":"handler: closed","stream_id":"znp9nlay"}
+{"time":"2025-03-16T19:53:54.49489621-04:00","level":"INFO","msg":"writer: Close: closed","stream_id":"znp9nlay"}
+{"time":"2025-03-16T19:53:54.494936927-04:00","level":"INFO","msg":"sender: closed","stream_id":"znp9nlay"}
+{"time":"2025-03-16T19:53:54.495183985-04:00","level":"INFO","msg":"stream: closed","id":"znp9nlay"}

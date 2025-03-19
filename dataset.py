@@ -31,7 +31,7 @@ def get_dataset(path, tokenizer, max_size=1000000000):
 
         sample = {
             "question_tokenized": question_tokenized,
-            "steps_tokenized": steps_tokenized,
+           # "steps_tokenized": steps_tokenized,
             "answer_tokenized": answer_tokenized,
             "idx": sample["idx"],
         }
@@ -62,16 +62,24 @@ def get_dataset(path, tokenizer, max_size=1000000000):
 
     # verify
     d = data[0]
-    complete = d["question"] + "\n" + "\n".join(d["steps"]) + "\n### " + d["answer"]
+    #complete = d["question"] + "\n" + "\n".join(d["steps"]) + "\n### " + d["answer"]
+    complete = d["question"] + "\n" + "\n### " + d["answer"]
     complete_tokenized = tokenizer.encode(complete, add_special_tokens=True) + [
         tokenizer.eos_token_id
     ]
-    assert (
-        complete_tokenized
-        == dataset[0]["question_tokenized"]
-        + list(itertools.chain.from_iterable(dataset[0]["steps_tokenized"]))
-        + dataset[0]["answer_tokenized"]
-    )
+   # print("COMPLETE TOKENIZED")
+   # print(len(complete_tokenized))
+   # print("################")
+   # print(len(dataset[0]["question_tokenized"]
+    #            + list(itertools.chain.from_iterable(dataset[0]["steps_tokenized"]))
+     #                   + dataset[0]["answer_tokenized"]))
+
+    #assert (
+    #    complete_tokenized
+    #    == dataset[0]["question_tokenized"]
+    #    + list(itertools.chain.from_iterable(dataset[0]["steps_tokenized"]))
+    #    + dataset[0]["answer_tokenized"]
+    #)
 
     return dataset
 

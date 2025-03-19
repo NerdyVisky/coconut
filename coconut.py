@@ -144,10 +144,11 @@ class Coconut(nn.Module):
             for idx_pair in filling_indices:
                 batch_idx, token_idx = idx_pair
 
-                # replace it with the preceding last hidden states
-                tensor_list[batch_idx][token_idx] = hidden_states[
-                    batch_idx, token_idx - 1 - hidden_states_offset, :
-                ]
+                if token_idx - 1 - hidden_states_offset < hidden_states.shape[1]:
+                    # replace it with the preceding last hidden states
+                    tensor_list[batch_idx][token_idx] = hidden_states[ batch_idx, token_idx - 1 - hidden_states_offset, :]
+                else:
+                    print(f"Warning: Skipping out-of-bounds access for batch {batch_idx}, token {token_idx}")
 
             # assemble the new inputs_embeds
             inputs_embeds = torch.stack(

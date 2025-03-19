@@ -18,8 +18,8 @@ pad_latent_to_max: True
 
 save_only_improve: True
 uniform_prob: 0.0
-model_id: openai-community/gpt2
-load_model_path: /scratch/vt2369/COCONUT/coconut/hugface/coconut_Reproduction/stage_0_training_ck/checkpoint_6
+model_id: deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B
+load_model_path: /scratch/vt2369/COCONUT/coconut/hugface/DeepSeek-R1-Distill-Qwen-1.5B-flats/model.safetensors
 seed: 0
 resume: 0
 bf16: True

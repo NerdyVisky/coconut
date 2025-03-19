@@ -1,0 +1,28 @@
+2025-03-16 19:43:33,790 INFO    MainThread:825040 [wandb_setup.py:_flush():79] Current SDK version is 0.18.7
+2025-03-16 19:43:33,791 INFO    MainThread:825040 [wandb_setup.py:_flush():79] Configure stats pid to 825040
+2025-03-16 19:43:33,791 INFO    MainThread:825040 [wandb_setup.py:_flush():79] Loading settings from /home/vt2369/.config/wandb/settings
+2025-03-16 19:43:33,791 INFO    MainThread:825040 [wandb_setup.py:_flush():79] Loading settings from /scratch/vt2369/COCONUT/coconut/wandb/settings
+2025-03-16 19:43:33,791 INFO    MainThread:825040 [wandb_setup.py:_flush():79] Loading settings from environment variables: {}
+2025-03-16 19:43:33,791 INFO    MainThread:825040 [wandb_setup.py:_flush():79] Applying setup settings: {'mode': None, '_disable_service': None}
+2025-03-16 19:43:33,791 INFO    MainThread:825040 [wandb_setup.py:_flush():79] Inferring run settings from compute environment: {'program_relpath': 'run.py', 'program_abspath': '/scratch/vt2369/COCONUT/coconut/run.py', 'program': '/scratch/vt2369/COCONUT/coconut/run.py'}
+2025-03-16 19:43:33,791 INFO    MainThread:825040 [wandb_setup.py:_flush():79] Applying login settings: {}
+2025-03-16 19:43:33,791 INFO    MainThread:825040 [wandb_setup.py:_flush():79] Applying login settings: {'api_key': '***REDACTED***'}
+2025-03-16 19:43:33,791 INFO    MainThread:825040 [wandb_init.py:_log_setup():533] Logging user logs to /scratch/vt2369/COCONUT/coconut/wandb/run-20250316_194333-0khxjjg7/logs/debug.log
+2025-03-16 19:43:33,791 INFO    MainThread:825040 [wandb_init.py:_log_setup():534] Logging internal logs to /scratch/vt2369/COCONUT/coconut/wandb/run-20250316_194333-0khxjjg7/logs/debug-internal.log
+2025-03-16 19:43:33,791 INFO    MainThread:825040 [wandb_init.py:init():619] calling init triggers
+2025-03-16 19:43:33,791 INFO    MainThread:825040 [wandb_init.py:init():626] wandb.init called with sweep_config: {}
+config: {}
+2025-03-16 19:43:33,791 INFO    MainThread:825040 [wandb_init.py:init():669] starting backend
+2025-03-16 19:43:33,791 INFO    MainThread:825040 [wandb_init.py:init():673] sending inform_init request
+2025-03-16 19:43:33,793 INFO    MainThread:825040 [backend.py:_multiprocessing_setup():104] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-03-16 19:43:33,796 INFO    MainThread:825040 [wandb_init.py:init():686] backend started and connected
+2025-03-16 19:43:33,800 INFO    MainThread:825040 [wandb_init.py:init():781] updated telemetry
+2025-03-16 19:43:33,837 INFO    MainThread:825040 [wandb_init.py:init():814] communicating run to backend with 90.0 second timeout
+2025-03-16 19:43:34,373 INFO    MainThread:825040 [wandb_init.py:init():867] starting run threads in backend
+2025-03-16 19:43:35,963 INFO    MainThread:825040 [wandb_run.py:_console_start():2456] atexit reg
+2025-03-16 19:43:35,963 INFO    MainThread:825040 [wandb_run.py:_redirect():2305] redirect: wrap_raw
+2025-03-16 19:43:35,963 INFO    MainThread:825040 [wandb_run.py:_redirect():2370] Wrapping output streams.
+2025-03-16 19:43:35,963 INFO    MainThread:825040 [wandb_run.py:_redirect():2395] Redirects installed.
+2025-03-16 19:43:35,966 INFO    MainThread:825040 [wandb_init.py:init():911] run started, returning control to user process
+2025-03-16 19:43:35,966 INFO    MainThread:825040 [wandb_run.py:_config_callback():1387] config_cb None None {'project': 'coconut', 'save_path': '/scratch/vt2369/COCONUT/coconut/hugface/saved_models/DeepSeekR1_distilled_Qwen1.5B_CCOT', 'name': 'gsm-coconut', 'only_eval': False, 'coconut': True, 'cot': False, 'no_thoughts': False, 'no_cot': False, 'c_thought': 2, 'epochs_per_stage': 1, 'max_latent_stage': 3, 'pad_latent_to_max': True, 'save_only_improve': False, 'uniform_prob': 0.0, 'model_id': 'deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B', 'load_model_path': '/scratch/vt2369/COCONUT/coconut/hugface/DeepSeek-R1-Distill-Qwen-1.5B-flats/model.safetensors', 'seed': 0, 'resume': 3, 'bf16': True, 'train_path': 'data/gsm_train.json', 'val_path': 'data/gsm_valid.json', 'reset_optimizer': True, 'batch_size_training': 32, 'debug': False, 'gradient_accumulation_steps': 4, 'num_epochs': 4, 'lr': 0.0001, 'weight_decay': 0.01}
+2025-03-16 19:45:25,919 WARNING MsgRouterThr:825040 [router.py:message_loop():75] message_loop has been closed

@@ -1,0 +1,85 @@
+_wandb:
+    value:
+        cli_version: 0.18.7
+        m: []
+        python_version: 3.12.9
+        t:
+            "1":
+                - 1
+                - 11
+                - 49
+                - 51
+                - 55
+            "2":
+                - 1
+                - 11
+                - 49
+                - 51
+                - 55
+            "3":
+                - 13
+                - 23
+                - 55
+            "4": 3.12.9
+            "5": 0.18.7
+            "6": 4.46.2
+            "8":
+                - 5
+            "12": 0.18.7
+            "13": linux-x86_64
+batch_size_training:
+    value: 32
+bf16:
+    value: true
+c_thought:
+    value: 2
+coconut:
+    value: true
+cot:
+    value: false
+debug:
+    value: false
+epochs_per_stage:
+    value: 1
+gradient_accumulation_steps:
+    value: 4
+load_model_path:
+    value: /scratch/vt2369/COCONUT/coconut/hugface/DeepSeek-R1-Distill-Qwen-1.5B-flats/model.safetensors
+lr:
+    value: 0.0001
+max_latent_stage:
+    value: 3
+model_id:
+    value: deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B
+name:
+    value: gsm-coconut
+no_cot:
+    value: false
+no_thoughts:
+    value: false
+num_epochs:
+    value: 4
+only_eval:
+    value: false
+pad_latent_to_max:
+    value: true
+project:
+    value: coconut
+reset_optimizer:
+    value: true
+resume:
+    value: 3
+save_only_improve:
+    value: false
+save_path:
+    value: /scratch/vt2369/COCONUT/coconut/hugface/saved_models/DeepSeekR1_distilled_Qwen1.5B_CCOT
+seed:
+    value: 0
+train_path:
+    value: data/gsm_train.json
+uniform_prob:
+    value: 0
+val_path:
+    value: data/gsm_valid.json
+weight_decay:
+    value: 0.01

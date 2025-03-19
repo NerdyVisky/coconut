@@ -5,7 +5,7 @@ import torch
 import torch.distributed
 import torch.optim as optim
 from transformers import AutoModelForCausalLM, AutoTokenizer
-
+from safetensors.torch import load_file
 import wandb
 
 from torch.nn.parallel import DistributedDataParallel as DDP
@@ -29,6 +29,8 @@ from copy import copy
 import itertools
 import os, sys
 import yaml
+import re
+import os
 import json
 import gc
 import argparse
@@ -114,9 +116,10 @@ def main():
     loaded = False
 
     if configs.load_model_path != "None":
-        saved_weights = torch.load(
-            configs.load_model_path, map_location=torch.device(rank)
-        )
+        if configs.load_model_path.endswith(".safetensors"):
+            saved_weights = load_file(configs.load_model_path)
+        else:
+            saved_weights = torch.load(configs.load_model_path, map_location=torch.device(rank))
 
         if configs.coconut and not any(
             [k.startswith("base_causallm") for k in saved_weights.keys()]
@@ -439,7 +442,13 @@ def main():
             torch.tensor(0, device=rank),
             torch.tensor(0, device=rank),
         )
-
+        def extract_numbers(text):
+            # Find all numbers in the string (including decimal numbers)
+            numbers = re.findall(r'-?\d+\.?\d*', text)
+            if numbers:
+                return float(numbers[0])
+            return None
+        raw_outputs = []
         with torch.no_grad():
             parallel_model.module.eval()
             for idx, batch in enumerate(valid_gen_dataloader):
@@ -471,17 +480,31 @@ def main():
                 cot_output = (
                     ("\n".join(text_output.split("\n")[1:])).split("#")[0].strip()
                 )
+                # Extract numerical values from string answers
+                try: # Convert answer to float
+                    answer_float = float(answer) if isinstance(answer, (int, float)) else extract_numbers(str(answer))
+                                                                # Convert model output to float
+                    output_float = float(answer_output) if answer_output.replace('.', '', 1).isdigit() else extract_numbers(answer_output)
+                                                                                        
+                                                                                                    # If both are valid numbers, check if output is within the correct range
+                    if answer_float is not None and output_float is not None:
+                        lower_bound = int(answer_float)
+                        upper_bound = lower_bound + 1 if answer_float > lower_bound else lower_bound
+                                                                                                                                                                                    
+                                                                                                                                                                                                    # Check if the model's output is one of these two integers
+                        is_correct = output_float == lower_bound or output_float == upper_bound
+                    else:
+                        is_correct = answer_output == answer
 
-                if idx < 5 and rank == 0:
-                    # print some examples
-                    print(
-                        f"Question {test_idx}: Answer = '{answer}' CoT = '{answer_cot}'"
-                    )
-                    print(f"Full output: '{tokenizer.decode(outputs[0])}'")
-                    print(f"Extracted Output: '{answer_output}'")
-
-                cor += answer_output == answer
-                cor_cot += cot_output == answer_cot
+                except (ValueError, TypeError):
+                    is_correct = answer_output == answer
+                result = {
+                        "question": question,
+                        "text_output": text_output,
+                        "answer_output": answer_output,
+                        "answer": answer
+                        }
+                raw_outputs.append(result)
 
                 pbar.update(1)
                 pbar.set_description(
@@ -501,6 +524,9 @@ def main():
         if rank == 0:
             print(f"Accuracy on validation set: {cor} / {total} = {cor/total}")
             print(f"CoT match on validation set: {cor_cot} / {total} = {cor_cot/total}")
+            with open('raw_output_log.json', 'w') as f:
+                json.dump(raw_outputs, f, indent=2)
+                print(f"Saved {len(raw_outputs)} evaluation results to raw_output_log.json")
         sys.stdout.flush()
 
         if wandb_run:

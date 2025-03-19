@@ -1,0 +1,55 @@
+Map (num_proc=32): 100%|███████████████████████████████████████████████████████████████████████████████████████████████████| 500/500 [00:01<00:00, 302.42 examples/s]
+Map (num_proc=32): 100%|████████████████████████████████████████████████████████████████████████████████████████████| 385620/385620 [01:14<00:00, 5178.85 examples/s]
+Map (num_proc=32): 100%|███████████████████████████████████████████████████████████████████████████████████████████████████| 500/500 [00:01<00:00, 287.22 examples/s]
+Training Epoch: 4:   0%|[34m                                                                                                                    [0m| 0/3012 [00:00<?, ?it/s][0m[34m[1mwandb[0m: [33mWARNING[0m Serializing object of type str that is 128634 bytes
+logging training data
+Traceback (most recent call last):
+  File "/scratch/vt2369/COCONUT/coconut/run.py", line 535, in <module>
+    main()
+  File "/scratch/vt2369/COCONUT/coconut/run.py", line 363, in main
+    outputs = parallel_model(**batch)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/distributed/fsdp/fully_sharded_data_parallel.py", line 864, in forward
+    output = self._fsdp_wrapped_module(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/vt2369/COCONUT/coconut/coconut.py", line 148, in forward
+    tensor_list[batch_idx][token_idx] = hidden_states[
+                                        ^^^^^^^^^^^^^^
+IndexError: index 148 is out of bounds for dimension 1 with size 109
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/scratch/vt2369/COCONUT/coconut/run.py", line 535, in <module>
+[rank0]:     main()
+[rank0]:   File "/scratch/vt2369/COCONUT/coconut/run.py", line 363, in main
+[rank0]:     outputs = parallel_model(**batch)
+[rank0]:               ^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/ext3/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/ext3/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/ext3/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/distributed/fsdp/fully_sharded_data_parallel.py", line 864, in forward
+[rank0]:     output = self._fsdp_wrapped_module(*args, **kwargs)
+[rank0]:              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/ext3/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/ext3/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/scratch/vt2369/COCONUT/coconut/coconut.py", line 148, in forward
+[rank0]:     tensor_list[batch_idx][token_idx] = hidden_states[
+[rank0]:                                         ^^^^^^^^^^^^^^
+[rank0]: IndexError: index 148 is out of bounds for dimension 1 with size 109

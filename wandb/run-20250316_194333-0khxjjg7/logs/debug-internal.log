@@ -1,0 +1,16 @@
+{"time":"2025-03-16T19:43:33.802279387-04:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2025-03-16T19:43:33.802390612-04:00","level":"INFO","msg":"created symlink","path":"/scratch/vt2369/COCONUT/coconut/wandb/run-20250316_194333-0khxjjg7/logs/debug-core.log"}
+{"time":"2025-03-16T19:43:34.035415767-04:00","level":"INFO","msg":"created new stream","id":"0khxjjg7"}
+{"time":"2025-03-16T19:43:34.035511505-04:00","level":"INFO","msg":"stream: started","id":"0khxjjg7"}
+{"time":"2025-03-16T19:43:34.037107016-04:00","level":"INFO","msg":"writer: Do: started","stream_id":"0khxjjg7"}
+{"time":"2025-03-16T19:43:34.041075496-04:00","level":"INFO","msg":"handler: started","stream_id":"0khxjjg7"}
+{"time":"2025-03-16T19:43:34.041199925-04:00","level":"INFO","msg":"sender: started","stream_id":"0khxjjg7"}
+{"time":"2025-03-16T19:43:34.379411955-04:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-16T19:45:25.919091924-04:00","level":"INFO","msg":"stream: closing","id":"0khxjjg7"}
+{"time":"2025-03-16T19:45:25.919139512-04:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-16T19:45:25.920436324-04:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-16T19:45:27.32404323-04:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-16T19:45:27.43617438-04:00","level":"INFO","msg":"handler: closed","stream_id":"0khxjjg7"}
+{"time":"2025-03-16T19:45:27.436270412-04:00","level":"INFO","msg":"writer: Close: closed","stream_id":"0khxjjg7"}
+{"time":"2025-03-16T19:45:27.436378356-04:00","level":"INFO","msg":"sender: closed","stream_id":"0khxjjg7"}
+{"time":"2025-03-16T19:45:27.436920024-04:00","level":"INFO","msg":"stream: closed","id":"0khxjjg7"}
